@@ -20,7 +20,10 @@
                                 <tr v-for="(tag, index) in tags" :key="index">
                                     <td>{{ tag.tag }}</td>
                                     <td>{{ tag.ket }}</td>
-                                    <td class="text-center"></td>
+                                    <td class="text-center">
+                                        <router-link :to="{name: 'tags.edit', params:{id: tag.id }}" class="btn btn-sm btn-primary me-2">EDIT</router-link>
+                                        <button @click.prevent="tagDelete(tag.id)" class="btn btn-sm btn-danger ml-1">DELETE</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -66,10 +69,26 @@ export default {
             })
         }
 
+        // function "tagDelete"
+        function tagDelete(id) {
+
+            //delete data tag by ID
+            axios.delete(`http://localhost:3000/api/tags/delete/${id}`)
+            .then(() => {
+
+                //panggil function "getDataTags"  
+                getDataTags()
+
+            }).catch(error => {
+                console.log(error.response.data)
+            })
+        }
+
         //return
         return {
             tags,
             getDataTags,
+            tagDelete
         }
 
     }
