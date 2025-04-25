@@ -1,0 +1,20 @@
+##################### STEP 1 #####################
+npm create vite@4.2.0 vue3-crud -- --template vue
+cd vue3-crud
+npm install
+npm run dev
+
+
+##################### STEP 2 #####################
+//untuk melakukan http request ke dalam server
+npm install axios
+
+npm install bootstrap
+
+npm install vue-router
+
+
+##################### STEP 3 #####################
+
+
+##################### STEP 4 #####################
